@@ -117,7 +117,7 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 				
 				break;
 			case 2:
-				addressBookImplementation.editPerson();
+				addressBookImplementation.editPerson(fileName);
 				break;
 			case 3:
 				addressBookImplementation.deletePerson();
@@ -144,8 +144,27 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 	
 
 	@Override
-	public void saveAddressBook() {
+	public void saveAddressBook(String filename, ArrayList<Person> personArrayList) {
 		// TODO Auto-generated method stub
+		
+		try {
+			fileWriter = new FileWriter(filename+".csv",true);
+			bw = new BufferedWriter(fileWriter);
+			
+			for (int J = 0; J < personArrayList.size(); J++) {
+				bw.write(personArrayList.get(J).toString() + "\n");
+			}
+			bw.close();
+			fileWriter.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		System.out.println("Data Saved in AddressBook :"+filename+".csv");
+		
 
 	}
 
@@ -166,5 +185,6 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 		// TODO Auto-generated method stub
 
 	}
+
 
 }

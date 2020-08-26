@@ -2,9 +2,13 @@ package com.addressBook;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBookMain {
+	
+	public static String filename;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -40,9 +44,19 @@ public class AddressBookMain {
 					
 				case 2:
 					personHashMap = addressBookManagerImplementation.openAddressBook();
+					@SuppressWarnings("rawtypes") 
+					Iterator it = personHashMap.entrySet().iterator();
+					
+					while (it.hasNext()) {
+						
+						@SuppressWarnings("rawtypes")
+						Map.Entry pair = (Map.Entry) it.next();
+						filename=(String) pair.getKey();
+						personArrayList=(ArrayList<Person>) pair.getValue();
+					}
 					break;
 				case 3:
-					addressBookManagerImplementation.saveAddressBook();
+					addressBookManagerImplementation.saveAddressBook(filename,personArrayList);
 					break;
 				case 4:
 					addressBookManagerImplementation.saveAsAddressBook();

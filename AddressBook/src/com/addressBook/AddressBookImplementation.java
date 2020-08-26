@@ -1,7 +1,13 @@
 package com.addressBook;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -20,6 +26,9 @@ public class AddressBookImplementation implements AddressBookInterface {
 	public HashMap<String, ArrayList<Person>> personHashMap = new HashMap<>(100);
 
 	public String patternPhone = "^[6-9]{1}[0-9]{9}";
+	public BufferedWriter bw;
+	
+	int flag = 0;
 
 	
 	@Override
@@ -61,9 +70,80 @@ public class AddressBookImplementation implements AddressBookInterface {
 		return personHashMap;
 	}
 	@Override
-	public void editPerson() {
+	public String editPerson(String fileName) {
 		// TODO Auto-generated method stub
 
+		System.out.println("Enter number for edit person data\n");
+		String lineToFind = sc.next();
+		
+		File inFile = new File((fileName+".csv"));
+		File tempFile = new File(fileName + ".tmp");
+		
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(inFile));
+			bw = new BufferedWriter(new FileWriter(tempFile));
+		
+		
+			String line = null;
+			
+			while ((line = br.readLine()) != null) {
+				if (line.trim().contains(lineToFind)) {
+					
+					System.out.println("Data found for given number\n" + line);
+					
+					String[] persondrtails = line.split(",");
+					
+					String firstname = persondrtails[0];
+					String lastname = persondrtails[1];
+					
+					System.out.println("enter the city");
+					String city = sc.next();
+					
+					System.out.println("enter the State");
+					String state = sc.next();
+					
+					System.out.println("enter the Zipcode");
+					int zipcode = sc.nextInt();
+					
+					String phonenumber = persondrtails[5];
+					
+					bw.write(firstname);
+					bw.write("," + lastname);
+					bw.write("," + city);
+					bw.write("," + state);
+					bw.write("," + zipcode);
+					bw.write("," + phonenumber);
+					bw.newLine();
+					flag++;
+				} else {
+					bw.write(line);
+					bw.newLine();
+				}
+	
+				
+				
+			}
+			bw.close();
+			br.close();
+			
+			inFile.delete();
+			tempFile.renameTo(inFile);
+			
+			if (flag == 0)
+				System.out.println("Data not found in AddressBook :" + fileName);
+			else
+				System.out.println("Data Modified Successfully..");
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 
 	@Override
