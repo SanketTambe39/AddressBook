@@ -7,10 +7,10 @@ public class Person {
 	String city;
 	String state;
 	
-	String zipCode;
+	int zipCode;
 	String phoneNumber;
 
-	public Person(String firstName, String lastName, String city, String state, String zipCode, String phoneNumber) {
+	public Person(String firstName, String lastName, String city, String state, int zipCode, String phoneNumber) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -55,11 +55,11 @@ public class Person {
 		this.state = state;
 	}
 
-	public String getZipCode() {
+	public int getZipCode() {
 		return zipCode; 
 	}
 
-	public void setZipCode(String zipCode) {
+	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 
@@ -73,8 +73,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", city=" + city + ", state=" + state
-				+ ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber + "]";
+		return "" + firstName + "" + lastName + "" + city + "" + state + "" + zipCode + "" + phoneNumber;
 	}
 	
 }
