@@ -11,6 +11,6 @@ public interface AddressBookInterface {
 	public String searchPerson(String fileName);
 	public String sortbyZipCode(String fileName);
 	public String sortbyName(String fileName);
-	public void Display();
+	public void Display(String fileName);
 	
 }

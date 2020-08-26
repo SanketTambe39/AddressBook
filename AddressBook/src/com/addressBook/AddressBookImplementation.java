@@ -322,9 +322,27 @@ public class AddressBookImplementation implements AddressBookInterface {
 	}
 
 	@Override
-	public void Display() {
+	public void Display(String fileName) {
 		// TODO Auto-generated method stub
 
+		System.out.println("Data Present in System :");
+		Scanner scanner;
+		try {
+			scanner = new Scanner(new File(fileName+".csv"));
+
+			while (scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				System.out.println(line);
+			}
+			
+			System.out.println(" \n\n");
+			file.exists();
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	public String acess(){
 		
