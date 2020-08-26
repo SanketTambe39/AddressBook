@@ -126,10 +126,10 @@ public class AddressBookManagerImplementation implements AddressBookManagerInter
 				addressBookImplementation.searchPerson(fileName);
 				break;
 			case 5:
-				addressBookImplementation.sortbyZipCode();
+				addressBookImplementation.sortbyZipCode(fileName);
 				break;
 			case 6:
-				addressBookImplementation.sortbyName();
+				addressBookImplementation.sortbyName(fileName);
 				break;
 			case 7:
 				addressBookImplementation.Display();

@@ -9,8 +9,8 @@ public interface AddressBookInterface {
 	public String editPerson(String fileName);
 	public String deletePerson(String fileName);
 	public String searchPerson(String fileName);
-	public void sortbyZipCode();
-	public void sortbyName();
+	public String sortbyZipCode(String fileName);
+	public String sortbyName(String fileName);
 	public void Display();
 	
 }
