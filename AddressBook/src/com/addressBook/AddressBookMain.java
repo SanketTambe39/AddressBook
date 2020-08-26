@@ -46,30 +46,37 @@ public class AddressBookMain {
 							
 						System.out.println("Please Enter Oprations you want to perform ::");
 						int ChoiceOpenBook=sc.nextInt();
-								
-						switch(ChoiceOpenBook) 
+						
+						while(true) 
 						{
-								
-							case 1:
-								addressBookImplementation.addPerson();
-								break;
-							case 2:
-								
-								addressBookImplementation.editPerson();
-								break;
-							case 3:
-								
-								addressBookImplementation.deletePerson();
-								break;
-							case 4:
-								addressBookImplementation.searchPerson();
-								break;
-							case 5:
-								addressBookImplementation.sortbyZipCode();
-								break;
-							case 6:
-								addressBookImplementation.sortbyName();
-								break;
+							switch(ChoiceOpenBook) 
+							{
+									
+								case 1:
+									addressBookImplementation.addPerson();
+									break;
+								case 2:
+									addressBookImplementation.editPerson();
+									break;
+								case 3:
+									addressBookImplementation.deletePerson();
+									break;
+								case 4:
+									addressBookImplementation.searchPerson();
+									break;
+								case 5:
+									addressBookImplementation.sortbyZipCode();
+									break;
+								case 6:
+									addressBookImplementation.sortbyName();
+									break;
+								case 7:
+									addressBookImplementation.Display();
+									break;
+								default:
+									System.out.println("Something Went Wrong. Please check the Choice");
+									break;
+							}
 						}
 					}
 				case 3:
@@ -90,6 +97,7 @@ public class AddressBookMain {
 					break;
 				default:
 					System.out.println("Wrong choice Please choose from the above only");
+					break;
 			}
 		}
 		
